@@ -3,7 +3,7 @@ import java.util.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
-public class BirthdayExample {
+public class Birthday {
 
   //
   // Func: ReadJSONFile
@@ -45,10 +45,11 @@ public class BirthdayExample {
     // get user input
     Scanner input = new Scanner(System.in);
     System.out.print("Enter a name:");
-    String ipname = input.nextLine();
+    String inputName = input.nextLine();
+    String perBirthday = "";
 
     // print user input
-    System.out.println("name = " + ipname);
+    System.out.println("name = " + inputName);
 
     // close the scanner
     input.close();
@@ -76,9 +77,14 @@ public class BirthdayExample {
       obj = (JSONObject) jsonData.get(i);
       birthday = (String) obj.get("birthday");
       name = (String) obj.get("name");
-      if(name.strip().equalsIgnoreCase(ipname.strip())) {
-        System.out.println("birthday = " + birthday);
-      }
+      if(name.strip().equalsIgnoreCase(inputName.strip())) {
+        perBirthday = String.valueOf(birthday);
+      } 
+    }
+    if(perBirthday.equals("")) {
+      System.out.println("Person not found!");
+    } else {
+      System.out.println("Birthday= " + perBirthday);
     }
   }
 }
